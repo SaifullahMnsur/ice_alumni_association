@@ -113,7 +113,7 @@ Here’s the updated documentation with tweaked values for the `/api/events/<slu
 | `whatsapp_number`    | `string`   | Yes      | WhatsApp number of the participant.       |
 | `adult_guests`       | `integer`  | Yes      | Number of adult guests accompanying.      |
 | `child_guests`       | `integer`  | Yes      | Number of child guests accompanying.      |
-| `total_amount`       | `decimal`  | Yes      | Total amount for the registration.        |
+| `total_amount`       | `integer`  | No/Auto      | Total amount for the registration. total_amount will be auto calculated based on given data. Use the api to show total amount        |
 | `payment_method`     | `string`   | Yes      | Payment method chosen (e.g., bkash, bank).|
 | `transaction_id`     | `string`   | Yes      | Unique transaction ID for payment.        |
 | `transaction_document` | `file`    | Yes      | File for the transaction document.        |
