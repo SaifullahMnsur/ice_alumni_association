@@ -88,36 +88,90 @@ This ensures that the example request comes first, followed by the response with
 ---
 
 
+Here’s the updated documentation with tweaked values for the `/api/events/<slug:event_id>/register/` endpoint:
+
+---
+
 ### 3. **Register for an Event**
 - **URL**: `/api/events/<slug:event_id>/register/`
 - **Method**: `POST`
-- **Description**: Allows a user to register for an event using form data.
-- **Request Format**: `multipart/form-data`
-- **Request Fields**:
-  - `student_id` (string): Unique ID of the student registering.
-  - `full_name` (string): Full name of the participant.
-  - `date_of_birth` (date): Date of birth in the format `YYYY-MM-DD`.
-  - `batch` (string): Batch identifier of the student.
-  - `session` (string): Session information of the student.
-  - `email` (string): Contact email address.
-  - `contact_number` (string): Primary contact number.
-  - `whatsapp_number` (string): WhatsApp contact number.
-  - `adult_guests` (integer): Number of adult guests.
-  - `child_guests` (integer): Number of child guests.
-  - `payment_method` (string): Payment method used (e.g., `bkash`, `nagad`, `rocket`, `bank`).
-  - `transaction_id` (string): Transaction ID for the payment.
-  - `transaction_document` (file): Upload of the transaction document.
-  - `profile_picture` (file): Upload of the participant's profile picture.
-  - `password` (string): Password for the registration.
-- **Response**:
-  ```json
-  {
-      "registration_id": "REG-12345",
-      "event": "ICE-RU-Silver-Jubilee",
-      "full_name": "John Doe",
-      "total_amount": 1300.00,
-      "approved": false
-  }
+- **Description**: Registers a participant for the specified event.
+
+**Request Format**:
+- Content-Type: `multipart/form-data`
+
+**Request Parameters**:
+| Field                | Type       | Required | Description                               |
+|----------------------|------------|----------|-------------------------------------------|
+| `student_id`         | `string`   | Yes      | Unique ID for the participant.            |
+| `full_name`          | `string`   | Yes      | Full name of the participant.             |
+| `date_of_birth`      | `date`     | Yes      | Participant's date of birth (YYYY-MM-DD). |
+| `batch`              | `string`   | Yes      | Batch information of the participant.     |
+| `session`            | `string`   | Yes      | Academic session of the participant.      |
+| `email`              | `email`    | Yes      | Email address of the participant.         |
+| `contact_number`     | `string`   | Yes      | Contact number of the participant.        |
+| `whatsapp_number`    | `string`   | Yes      | WhatsApp number of the participant.       |
+| `adult_guests`       | `integer`  | Yes      | Number of adult guests accompanying.      |
+| `child_guests`       | `integer`  | Yes      | Number of child guests accompanying.      |
+| `total_amount`       | `decimal`  | Yes      | Total amount for the registration.        |
+| `payment_method`     | `string`   | Yes      | Payment method chosen (e.g., bkash, bank).|
+| `transaction_id`     | `string`   | Yes      | Unique transaction ID for payment.        |
+| `transaction_document` | `file`    | Yes      | File for the transaction document.        |
+| `profile_picture`    | `file`     | Yes      | Profile picture of the participant.       |
+| `password`           | `string`   | Yes      | Password for participant's account.       |
+
+**Example Request**:
+```plaintext
+POST /api/events/ICE-RU-Silver-Jubilee/register/
+```
+
+**Example Form Data**:
+```plaintext
+student_id: 2110778000
+full_name: John Doe
+date_of_birth: 1995-10-15
+batch: 22
+session: 2020-2021
+email: johndoe@gmail.com
+contact_number: +8801234567890
+whatsapp_number: +8809876543210
+adult_guests: 3
+child_guests: 1
+total_amount: 12000.00
+payment_method: bank
+transaction_id: TX789123
+transaction_document: <uploaded_file>
+profile_picture: <uploaded_file>
+password: example_password
+```
+
+**Response**:
+```json
+{
+    "student_id": "2110778000",
+    "full_name": "John Doe",
+    "date_of_birth": "1995-10-15",
+    "batch": "22",
+    "session": "2020-2021",
+    "email": "johndoe@gmail.com",
+    "contact_number": "+8801234567890",
+    "whatsapp_number": "+8809876543210",
+    "adult_guests": 3,
+    "child_guests": 1,
+    "total_amount": "11000",
+    "payment_method": "bank",
+    "transaction_id": "TX789123",
+    "transaction_document": "http://localhost:8000/media/transactions_documents/2110778000.jpg",
+    "profile_picture": "http://localhost:8000/media/profile_picture/2110778000.jpg",
+    "password": "pbkdf2_sha256$870000$5xybnh0HUIJgshgeG7fRLe$1hvkgWRkc3OSPYREn5xvQ7WJpYN65zddU6HQ4PhML0w=",
+    "event": "ICE-RU-Silver-Jubilee"
+}
+```
+
+**Note**:
+- Ensure all required fields are provided.
+- The `transaction_document` and `profile_picture` must be valid uploaded files.
+- The `password` field is securely hashed before storage.
 
 
 ---
