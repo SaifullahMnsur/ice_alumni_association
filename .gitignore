@@ -1,9 +1,9 @@
 # Ignore Python bytecode files
 *.pyc
 *.pyo
-ice_alumni_association/__pycache__
-events/__pycache__
-api/__pycache__
-ice_alumni_association/events/models/__pycache__
-ice_alumni_association/events/serializers/__pycache__
-ice_alumni_association/events/views/__pycache__
+events/views/__pycache__/
+events/serializers/__pycache__/
+events/models/__pycache__/
+api/__pycache__/
+events/__pycache__/
+ice_alumni_association/__pycache__/
