@@ -15,7 +15,7 @@ class EventRegistrationView(APIView):
         # Prepare the data to create a Registration
         data = request.data.copy()
         # data['event'] = event.event_id  # Automatically set the event based on the event_id
-        data['event_id'] = event_id  # Automatically set the event based on the event_id
+        data['event'] = event.event_id  # Automatically set the event based on the event_id
         
         # Create the Registration instance and validate
         serializer = RegistrationSerializer(data=data, context={'request': request})
