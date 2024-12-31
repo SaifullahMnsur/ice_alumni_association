@@ -11,7 +11,7 @@ class EventAdmin(admin.ModelAdmin):
     list_filter = ('status',)
     search_fields = ('title', 'event_id', 'description')
     # You can include the media file directly in the form
-    fields = ('event_id', 'title', 'description', 'start_time', 'end_time', 'location', 'status', 'media_file', 'amount_per_person', 'amount_per_adult_guest', 'amount_per_child_guest')
+    fields = ('event_id', 'title', 'description', 'start_time', 'end_time', 'location', 'status', 'media_file', 'amount_per_person', 'amount_per_adult_guest', 'amount_per_child_guest', 'bkash_account_number', 'bkash_payment_option', 'nagad_account_number', 'nagad_payment_option', 'rocket_account_number', 'rocket_payment_option', 'bank_account_name', 'bank_account_number', 'bank_name', 'bank_branch_name', 'bank_swift_code', 'bank_routing_number', 'bank_city', 'bank_country')
 
 admin.site.register(Event, EventAdmin)
 
