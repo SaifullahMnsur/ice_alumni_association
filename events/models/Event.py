@@ -55,6 +55,13 @@ class Event(models.Model):
     amount_per_adult_guest = models.PositiveIntegerField(default=0, help_text="The amount per person for the event.")
     amount_per_child_guest = models.PositiveIntegerField(default=0, help_text="The amount per person for the event.")
     
+    PAYMENT_METHOD_CHOICES = [
+        ('bkash', 'bKash'),
+        ('nagad', 'Nagad'),
+        ('rocket', 'Rocket'),
+        ('bank', 'Bank Transfer'),
+    ]
+    
     # bKash fields
     bkash_account_number = models.CharField(max_length=20, blank=True, help_text="bKash account number.")
     bkash_payment_option = models.CharField(

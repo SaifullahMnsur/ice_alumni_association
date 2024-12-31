@@ -57,8 +57,8 @@ class Registration(models.Model):
     whatsapp_number = models.CharField(max_length=15, blank=False)
     adult_guests = models.PositiveIntegerField(blank=False)
     child_guests = models.PositiveIntegerField(blank=False)
-    total_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0, blank=False)
-    payment_method = models.CharField(max_length=100, blank=False)
+    total_amount = models.PositiveIntegerField(default=Event.amount_per_person, blank=False)
+    payment_method = models.CharField(max_length=100, choices=Event.PAYMENT_METHOD_CHOICES, blank=False)
     transaction_id = models.CharField(max_length=255, blank=False)
     
     # Media files should be saved under student_id
