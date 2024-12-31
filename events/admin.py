@@ -28,29 +28,6 @@ class RegistrationAdmin(admin.ModelAdmin):
     # Add search fields for quick searching
     search_fields = ('student_id', 'full_name', 'email', 'transaction_id')
 
-    # Allow the admin to edit multiple records at once (bulk actions)
-    actions = ['approve_registrations', 'reject_registrations']
-
-    # Add a custom button to approve/reject directly from the list view
-    def action_buttons(self, obj):
-        return format_html(
-            '<a class="button" href="/admin/app/registration/{}/change/">View</a>',
-            obj.id
-        )
-    action_buttons.short_description = 'Actions'
-
-    # Method for approving registrations in bulk
-    def approve_registrations(self, request, queryset):
-        updated = queryset.update(approved=True)
-        self.message_user(request, f'{updated} registration(s) approved.')
-    approve_registrations.short_description = 'Approve selected registrations'
-
-    # Method for rejecting registrations in bulk
-    def reject_registrations(self, request, queryset):
-        updated = queryset.update(approved=False)
-        self.message_user(request, f'{updated} registration(s) rejected.')
-    reject_registrations.short_description = 'Reject selected registrations'
-
     # Make sure admin can see the password field (although hashed, useful for debugging)
     readonly_fields = ('password',)
 
