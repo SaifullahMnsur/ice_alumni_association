@@ -8,6 +8,8 @@ api/__pycache__/
 events/__pycache__/
 ice_alumni_association/__pycache__/
 
+ice_alumni_association/events/migrations/__pycache__/
+
 # Ignore database files
 *.sqlite3
 db.sqlite3  # For SQLite databases
