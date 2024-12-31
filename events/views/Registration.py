@@ -26,16 +26,6 @@ class EventRegistrationView(APIView):
         print("Error invalid serializer")
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class CalculateTotalAmountView(APIView):
-    def get(self, request, *args, **kwargs):
-        event_id = request.query_params.get('event_id')
-        child_guests = int(request.query_params.get('child_guests', 0))
-        adult_guests = int(request.query_params.get('adult_guests', 0))
-
-        event = get_object_or_404(Event, event_id=event_id)
-        total_amount = event.amount_per_person + event.amount_per_adult_guest * adult_guests + event.amount_per_child_guest * child_guests
-        return Response({'total_amount': total_amount})
-
 class RegistrationApprovalView(APIView):
     def patch(self, request, *args, **kwargs):
         registration_id = kwargs.get('pk')
