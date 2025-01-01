@@ -19,7 +19,7 @@ admin.site.register(Event, EventAdmin)
 class RegistrationAdmin(admin.ModelAdmin):
     # List the fields you want to display in the admin list view
     list_display = (
-        'student_id', 'full_name', 'event_id', 'total_amount', 'registration_datetime', 'approved', 'transaction_document', 'profile_picture', 'action_buttons'
+        'student_id', 'full_name', 'event_id', 'total_amount', 'registration_datetime', 'approved', 'transaction_document', 'profile_picture'
     )
 
     # Add filters to the sidebar
