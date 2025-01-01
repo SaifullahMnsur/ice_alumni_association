@@ -3,7 +3,7 @@
 This document provides details of the available API endpoints for the events system.
 
 ## Base URL
-All endpoints are prefixed with `/api/`.
+All endpoints are prefixed with `https://saifullahmnsur.pythonanywhere.com/api/`.
 
 ---
 
